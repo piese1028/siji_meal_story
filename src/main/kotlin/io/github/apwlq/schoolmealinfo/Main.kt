@@ -16,19 +16,6 @@ fun publish() {
     println("publishing...")
     val client = login()
     client.actions()
-        .timeline()
-        .uploadPhoto(genTimelineImage("${getLunch()}"),"${getNowDate()} 급식")
-        .thenAccept {
-            println(
-                """
-                    --------------------------
-                   "Successfully uploaded timeline!" 
-                    --------------------------
-                """.trimIndent()
-            )
-        }
-        .join() // block current thread until complete
-    client.actions()
         .story()
         .uploadPhoto(genStoryImage("${getLunch()}"))
         .thenAccept {
